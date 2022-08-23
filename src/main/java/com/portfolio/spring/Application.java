@@ -17,7 +17,7 @@ public class Application {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("https://cvsfrontend-38ffe.web.app").allowedMethods("*").allowedHeaders("*");
+                registry.addMapping("/**").allowedOrigins("**").allowedMethods("*").allowedHeaders("*");
             }
         };
     }
