@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/header")
-@CrossOrigin(origins = "https://frontarg-fcead.web.app")
+@CrossOrigin(origins ="https://frontarg-fcead.web.app")
 public class HeaderController {
 
     @Autowired
