@@ -33,6 +33,7 @@ public class PersonaController {
         List<Persona> list = persoServ.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
+    
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<Persona> getById(@PathVariable("id") Long id) {
