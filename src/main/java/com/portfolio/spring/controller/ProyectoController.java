@@ -51,7 +51,7 @@ public class ProyectoController {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
         proServ.delete(id);
-        return new ResponseEntity(new Mensaje("Experiencia eliminada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Proyecto eliminado"), HttpStatus.OK);
     }
     
     @PreAuthorize("hasRole('ADMIN')")
@@ -59,17 +59,17 @@ public class ProyectoController {
     public ResponseEntity<?> create(@RequestBody ProyectoDto dtopro
     ) {
         if (StringUtils.isBlank(dtopro.getNombreP())) {
-            return new ResponseEntity(new Mensaje("El campo de la empresa es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El campo es obligatorio"), HttpStatus.BAD_REQUEST);
         }
 
         if (proServ.existByNombreP(dtopro.getNombreP())) {
-            return new ResponseEntity(new Mensaje("Esa empresa existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El proyecto ya existe"), HttpStatus.BAD_REQUEST);
         }
 
         Proyecto proyecto = new Proyecto(dtopro.getNombreP(), dtopro.getDescripcionP(), dtopro.getImg(), dtopro.getRepo());
         proServ.save(proyecto);
 
-        return new ResponseEntity(new Mensaje("Experiencia agregada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Proyecto agregado"), HttpStatus.OK);
     }
     
     @PreAuthorize("hasRole('ADMIN')")
@@ -82,11 +82,11 @@ public class ProyectoController {
         }
 
         if (proServ.existByNombreP(dtopro.getNombreP()) && proServ.getByNombreP(dtopro.getNombreP()).get().getId() != id) {
-            return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El proyecto ya existe"), HttpStatus.BAD_REQUEST);
         }
 
         if (StringUtils.isBlank(dtopro.getNombreP())) {
-            return new ResponseEntity(new Mensaje("El nombre de la empresa es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
 
         Proyecto proyecto = proServ.getOne(id).get();
@@ -96,7 +96,7 @@ public class ProyectoController {
         proyecto.setRepo(dtopro.getRepo());
 
         proServ.save(proyecto);
-        return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Proyecto actualizado"), HttpStatus.OK);
     }
     
 }

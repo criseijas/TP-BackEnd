@@ -40,7 +40,7 @@ public class HeaderController {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
         headerServ.delete(id);
-        return new ResponseEntity(new Mensaje("Experiencia eliminada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Header eliminado"), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
